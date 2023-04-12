@@ -1,0 +1,12 @@
+<messages>
+   <note>
+      <heading lang="ru">Напоминание</heading>
+      <body>Отправить письмо!</body>
+      <desk>4</desk>
+   </note>
+   <note>
+      <heading lang="ru">Re: Напоминание</heading>
+      <body>Письмо отправлено</body>
+      <desk>7</desk>
+   </note>
+</messages>
