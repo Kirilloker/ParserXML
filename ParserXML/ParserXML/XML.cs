@@ -3,19 +3,12 @@ using System.Xml.Linq;
 
 public class XMLelement
 {
-    public string? name;
-    public string? value;
-    public List<Attribute> attributes;
-    public List<XMLelement> children;
-    public XMLelement parent;
+    public string name = "";
+    public string value = "";
+    public List<Attribute> attributes = new List<Attribute>();
+    public List<XMLelement> children = new List<XMLelement>();
+    //public XMLelement parent;
 
-    public XMLelement(string? name, List<Attribute> attributes, List<XMLelement> children, XMLelement parent)
-    {
-        this.name = name;
-        this.attributes = attributes;
-        this.children = children;
-        this.parent = parent;
-    }
 
     public XMLelement() { }
 

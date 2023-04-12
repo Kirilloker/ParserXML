@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Charp\\ParserXML\\ParserXML\\ParserXML.csproj",
+      "projectUniqueName": "D:\\Charp\\CourseWorkParser\\ParserXML\\ParserXML\\ParserXML\\ParserXML.csproj",
       "projectName": "ParserXML",
-      "projectPath": "D:\\Charp\\ParserXML\\ParserXML\\ParserXML.csproj",
+      "projectPath": "D:\\Charp\\CourseWorkParser\\ParserXML\\ParserXML\\ParserXML\\ParserXML.csproj",
       "packagesPath": "C:\\Users\\korya\\.nuget\\packages\\",
-      "outputPath": "D:\\Charp\\ParserXML\\ParserXML\\obj\\",
+      "outputPath": "D:\\Charp\\CourseWorkParser\\ParserXML\\ParserXML\\ParserXML\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
