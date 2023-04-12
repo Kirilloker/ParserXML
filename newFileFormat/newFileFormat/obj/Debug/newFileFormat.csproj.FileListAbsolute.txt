@@ -1,0 +1,10 @@
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\bin\Debug\newFileFormat.exe.config
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\bin\Debug\newFileFormat.exe
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\bin\Debug\newFileFormat.pdb
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.csproj.AssemblyReference.cache
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.csproj.SuggestedBindingRedirects.cache
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.Properties.Resources.resources
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.csproj.GenerateResource.cache
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.csproj.CoreCompileInputs.cache
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.exe
+D:\Charp\CourseWorkParser\ParserXML\newFileFormat\newFileFormat\obj\Debug\newFileFormat.pdb
