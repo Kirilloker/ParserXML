@@ -18,58 +18,56 @@ public class ParserJRNL
         c = JRNLtext[0];
     }
 
-    
-
-    public Hashtable Parsing(int prevLevel = 0) 
+    public JRNL getNewElement() 
     {
-        int newLevel = 0;
+        int level = 0;
 
         string nameElement = "";
         string valueElement = "";
-        
-        while (c == '~') 
+
+        while (c == '~')
         {
-            newLevel++;
+            level++;
             c = NC();
         }
 
-        while (c != '-' && c != '\n' && c != '\0') 
+        while (c != '-' && c != '\n')
         {
             nameElement += c;
             c = NC();
         }
 
-        if (c == '\0') return JRNLtable;
-                
-        while (c != '~' && c != '\0') 
+        while (c != '~' && c != '\0')
         {
             valueElement += c;
             c = NC();
         }
 
         JRNL element = new JRNL();
+
         element.name = nameElement;
         element.value = valueElement;
+        element.level = level;
 
-        // Если числа одинакового порядка
-        if (prevLevel.ToString().Length == newLevel) 
+        return element;
+    }
+
+    public JRNL Parsing() 
+    {
+        JRNL root = new JRNL();
+
+        while(c != '\0') 
         {
-            newLevel = prevLevel + 1;
-        }
-        else if ( prevLevel.ToString().Length > newLevel) 
-        {
-            newLevel = prevLevel / 10 + 1;
-        }
-        else 
-        {
-            newLevel = prevLevel * 10 + 1;
+            JRNL newElement = getNewElement();
+            JRNL parent = root;
+
+            while(newElement.level - 1 != parent.level)
+                parent = parent.children[^1];
+
+            parent.children.Add(newElement);
         }
 
-        JRNLtable.Add(newLevel, element);
-
-        if (c == '\0') return JRNLtable;
-
-        return Parsing(newLevel);
+        return root;
     }
 
 

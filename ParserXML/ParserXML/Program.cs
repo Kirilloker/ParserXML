@@ -23,26 +23,22 @@ void saveFile(string file)
 
 int main() 
 {
-    //Parser parser = new Parser(getFile("test.xml"));
-    
-    //XMLelement root = parser.Parsing();
+    // XML
+    Parser parser = new Parser(getFile("test.xml"));
 
-    //AntiParser antiParser = new AntiParser();
-    //string XMLfile = antiParser.AntiParsing(root);
+    XMLelement root = parser.Parsing();
 
-    //Console.WriteLine(XMLfile);
-    //saveFile(XMLfile);
+    AntiParser antiParser = new AntiParser();
+    string XMLfile = antiParser.AntiParsing(root);
 
+    saveFile(XMLfile);
+
+
+    // JRNL
     ParserJRNL parserJRNL = new ParserJRNL(getFile("testJRNL.jrnl"));
+    JRNL root = parserJRNL.Parsing();
 
-    Hashtable hashtable = parserJRNL.Parsing();
-    foreach (DictionaryEntry entry in hashtable) 
-    {
-        Console.WriteLine(entry.Key);
-        Console.WriteLine(((JRNL)entry.Value).name);
-        Console.WriteLine(((JRNL)entry.Value).value);
-        Console.WriteLine("0000000");
-    }
+
     return 0;
 }
 

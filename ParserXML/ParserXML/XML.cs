@@ -1,15 +1,18 @@
-﻿
-using System.Xml.Linq;
-
-public class XMLelement
+﻿public struct XMLelement
 {
-    public string name = "";
-    public string value = "";
-    public List<Attribute> attributes = new List<Attribute>();
-    public List<XMLelement> children = new List<XMLelement>();
+    public string name;
+    public string value;
+    public List<Attribute> attributes;
+    public List<XMLelement> children;
     //public XMLelement parent;
 
-    public XMLelement() { }
+    public XMLelement() 
+    {
+        name = "";
+        value = "";
+        attributes = new List<Attribute>();
+        children = new List<XMLelement>();
+    }
 }
 
 

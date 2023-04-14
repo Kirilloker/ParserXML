@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,12 @@ using System.Windows.Forms;
 
 namespace newFileFormat
 {
+    public struct JRNL
+    {
+        public string name;
+        public string value;
+    }
+
     public partial class TestFormTreeView : Form
     {
         public TestFormTreeView()
@@ -21,10 +28,31 @@ namespace newFileFormat
 
         TreeView tv = new TreeView();
 
+        Hashtable JRNLtable = new Hashtable();
 
+        void createTestHashTable() 
+        {
+            JRNL first = new JRNL();
+            first.name = "a";
+            first.value = "-e-e";
+            JRNL second = new JRNL();
+            first.name = "b";
+            first.value = "-e-e";
+            JRNL thrist = new JRNL();
+            first.name = "c";
+            first.value = "-e-e";
+
+            JRNLtable.Add(11, first);
+            JRNLtable.Add(2, second);
+            JRNLtable.Add(1, thrist);
+        }
 
         private void TestFormTreeView_Load(object sender, EventArgs e)
         {
+
+            createTestHashTable();
+
+            JRNLtable.Remove(1);
 
             string x = "~a" +
                 "Desctiprtop" +
@@ -69,7 +97,7 @@ namespace newFileFormat
             TreeNode tn3_3 = new TreeNode("k");
             TreeNode tn3_4 = new TreeNode("l");
             TreeNode tn4 = new TreeNode("m");
-            tn2.Name = "asdasdas";
+            
             
 
             tn2.Nodes.Add(tn2_1);
