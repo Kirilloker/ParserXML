@@ -17,8 +17,17 @@ namespace newFileFormat
     {
         public string name;
         public string value;
-    }
+        public int level;
+        public List<JRNL> children;
 
+        public JRNL()
+        {
+            level = 0;
+            name = "";
+            value = "";
+            children = new List<JRNL>();
+        }
+    }
     public partial class TestFormTreeView : Form
     {
         public TestFormTreeView()
@@ -28,54 +37,30 @@ namespace newFileFormat
 
         TreeView tv = new TreeView();
 
-        Hashtable JRNLtable = new Hashtable();
-
-        void createTestHashTable() 
+        public TreeNode createTree(JRNL root)
         {
-            JRNL first = new JRNL();
-            first.name = "a";
-            first.value = "-e-e";
-            JRNL second = new JRNL();
-            first.name = "b";
-            first.value = "-e-e";
-            JRNL thrist = new JRNL();
-            first.name = "c";
-            first.value = "-e-e";
+            TreeNode tree = new TreeNode();
 
-            JRNLtable.Add(11, first);
-            JRNLtable.Add(2, second);
-            JRNLtable.Add(1, thrist);
+            foreach (JRNL child in root.children)
+            {
+                TreeNode node = new TreeNode(child.name);
+
+                foreach (TreeNode child_node in createTree(child).Nodes) 
+                {
+                    node.Nodes.Add(child_node);
+                }
+
+                tree.Nodes.Add(node);
+            }
+
+            return tree;
         }
+
 
         private void TestFormTreeView_Load(object sender, EventArgs e)
         {
 
-            createTestHashTable();
 
-            JRNLtable.Remove(1);
-
-            string x = "~a" +
-                "Desctiprtop" +
-                "Txt" +
-                "~b" +
-                "dew" +
-                "sdf" +
-                "~~c" +
-                "sdfsd" +
-                "qwvf" +
-                "~~d" +
-                "dsf" +
-                "dsf" +
-                "dsf" +
-                "ew" +
-                "we" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "" +
-                "";
 
             Console.WriteLine("Hello, World");
 
