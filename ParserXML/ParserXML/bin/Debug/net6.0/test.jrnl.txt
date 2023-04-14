@@ -1,0 +1,9 @@
+~Первый узел дерева									 
+-nameelemnt:Text;border:12;color:red;...
+-какой-то текст хуекст
+~~Второй узел дерева - под дерево первого 
+-nameelemnt:Text;border:12;color:red;...
+-какой-то текст хуекст
+~Третий узел дерева 								  
+-nameelemnt:Text;border:12;color:red;...
+-какой-то текст хуекст

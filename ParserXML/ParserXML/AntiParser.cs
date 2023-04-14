@@ -2,7 +2,7 @@
 
 public class AntiParser
 {
-    public string AntiParsing(XMLelement element, int depth) 
+    public string AntiParsing(XMLelement element, int depth = 0) 
     {
         // Итоговая строка 
         string str = "";
@@ -42,7 +42,7 @@ public class AntiParser
             // Делаем отступ для закрывающего тега
             str += "\n";
             str += indent;
-        }
+        } 
 
         // Формируем закрывающий тэг
         str += "</" + element.name + ">"; 

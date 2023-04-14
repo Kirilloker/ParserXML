@@ -165,7 +165,7 @@ public class Parser
         if (XMLtext.Length <= numberCurrentChar)
         {
             Console.WriteLine("END FILE!");
-            return '?';
+            return '\0';
         }
 
         return XMLtext[numberCurrentChar];

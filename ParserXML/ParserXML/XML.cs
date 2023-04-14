@@ -9,9 +9,23 @@ public class XMLelement
     public List<XMLelement> children = new List<XMLelement>();
     //public XMLelement parent;
 
-
     public XMLelement() { }
+}
 
+
+public readonly struct Attribute 
+{
+    public readonly string name;
+    public readonly string value;
+
+    public Attribute(string _name, string _value) { name = _name; value = _value; }
+}
+
+
+
+
+
+/*
     public override string ToString()
     {
         string print = "";
@@ -46,13 +60,4 @@ public class XMLelement
 
         return print;
     }
-}
-
-
-public readonly struct Attribute 
-{
-    public readonly string name;
-    public readonly string value;
-
-    public Attribute(string _name, string _value) { name = _name; value = _value; }
-}
+ */

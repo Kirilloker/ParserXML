@@ -19,25 +19,31 @@ namespace newFileFormat
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 16; i++)
-            {
+            TreeView treeView = new TreeView();
 
-                Button btn = new Button();
-                btn.Text = "Нажми меня" + i.ToString();
-                btn.Location = new Point(10 , 10 + 30 * i);
-                btn.Size = new Size(100, 30);
-                this.Controls.Add(btn);
-            }
+            TreeNode x = new TreeNode();
+            
+            //treeView.Nodes.Add("", new )
+            treeView.Location = new Point(10, 10);
+            treeView.Size = new Size(100, 300);
+            this.Controls.Add(treeView);
 
-            for (int i = 0; i < 16; i++)
-            {
 
-                Button btn = new Button();
-                btn.Text = "Нажми меня" + i.ToString();
-                btn.Location = new Point(10 + 110 * i, 10 + 30 * i);
-                btn.Size = new Size(100, 30);
-                this.Controls.Add(btn);
-            }
+
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+       
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
+        {
 
         }
     }
