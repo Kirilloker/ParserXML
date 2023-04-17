@@ -1,23 +1,18 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
 
 namespace newFileFormat
 {
-    public struct JRNL
+    public class JRNL
     {
         public string name;
         public string value;
         public int level;
+        public int id;
         public List<JRNL> children;
 
         public JRNL()
@@ -36,6 +31,9 @@ namespace newFileFormat
         }
 
         TreeView tv = new TreeView();
+        JRNL root = new JRNL();
+
+        int id_jrtnl = 0;
 
         public TreeNode createTree(JRNL root)
         {
@@ -48,7 +46,13 @@ namespace newFileFormat
                 foreach (TreeNode child_node in createTree(child).Nodes) 
                 {
                     node.Nodes.Add(child_node);
+                    
                 }
+                child.id = id_jrtnl++;
+
+                node.Name = child.id.ToString();
+                node.Text = child.name;
+                
 
                 tree.Nodes.Add(node);
             }
@@ -59,61 +63,116 @@ namespace newFileFormat
 
         private void TestFormTreeView_Load(object sender, EventArgs e)
         {
+            root.name = "Root element";
+            root.value = "-text";
 
+            JRNL a_element = new JRNL();
+            a_element.name = "a";
+            a_element.value = "-text a";
 
+            JRNL b_element = new JRNL();
+            b_element.name = "b";
+            b_element.value = "-text b";
 
-            Console.WriteLine("Hello, World");
+            JRNL c_element = new JRNL();
+            c_element.name = "c";
+            c_element.value = "-text c";
 
-            //TreeView tv = new TreeView();
+            b_element.children.Add(c_element);
+
+            JRNL d_element = new JRNL();
+            d_element.name = "d";
+            d_element.value = "-text d";
+
+            b_element.children.Add(d_element);
+
+            JRNL e_element = new JRNL();
+            e_element.name = "e";
+            e_element.value = "-text e";
+
+            JRNL f_element = new JRNL();
+            f_element.name = "f";
+            f_element.value = "-text f";
+
+            e_element.children.Add(f_element);
+
+            JRNL g_element = new JRNL();
+            g_element.name = "g";
+            g_element.value = "-text g";
+
+            e_element.children.Add(g_element);
+
+            JRNL h_element = new JRNL();
+            h_element.name = "h";
+            h_element.value = "-text h";
+
+            g_element.children.Add(h_element);
+
+            JRNL i_element = new JRNL();
+            i_element.name = "i";
+            i_element.value = "-text i";
+
+            g_element.children.Add(i_element);
+
+            JRNL k_element = new JRNL();
+            k_element.name = "k";
+            k_element.value = "-text k";
+
+            e_element.children.Add(k_element);
+
+            JRNL l_element = new JRNL();
+            l_element.name = "l";
+            l_element.value = "-text l";
+
+            e_element.children.Add(l_element);
+
+            JRNL m_element = new JRNL();
+            m_element.name = "m";
+            m_element.value = "-text m";
+
+            root.children.Add(a_element);
+            root.children.Add(b_element);
+            root.children.Add(e_element);
+            root.children.Add(m_element);
+           
+            
+
+            TreeView tv = new TreeView();
+            //tv.
+            //tv.Nodes = createTree(root);
+
+            foreach (TreeNode item in createTree(root).Nodes)
+            {
+                tv.Nodes.Add(item);
+            }
+
             tv.Location = new Point(10, 10);
             tv.Size = new Size(100, 300);
-            
-
-
-            TreeNode tn1 = new TreeNode("a");
-            TreeNode tn2 = new TreeNode("b");
-            TreeNode tn2_1 = new TreeNode("c");
-            TreeNode tn2_2 = new TreeNode("d");
-            TreeNode tn3 = new TreeNode("e");
-            TreeNode tn3_1 = new TreeNode("f");
-            TreeNode tn3_2 = new TreeNode("g");
-            TreeNode tn3_2_1 = new TreeNode("h");
-            TreeNode tn3_2_2 = new TreeNode("i");
-            TreeNode tn3_3 = new TreeNode("k");
-            TreeNode tn3_4 = new TreeNode("l");
-            TreeNode tn4 = new TreeNode("m");
-            
-            
-
-            tn2.Nodes.Add(tn2_1);
-            tn2.Nodes.Add(tn2_2);
-            tn3.Nodes.Add(tn3_1);
-            tn3.Nodes.Add(tn3_2);
-            tn3_2.Nodes.Add(tn3_2_1);
-            tn3_2.Nodes.Add(tn3_2_2);
-            tn3.Nodes.Add(tn3_3);
-            tn3.Nodes.Add(tn3_4);
-
-
-            tv.Nodes.Add(tn1);
-            tv.Nodes.Add(tn2);
-            tv.Nodes.Add(tn3);
-            tv.Nodes.Add(tn4);
-
             this.Controls.Add(tv);
 
             tv.DoubleClick += MyAfterSelectHandler;
         }
 
+        JRNL searchJRNLByID(JRNL root, int id) 
+        {
+            foreach (var item in root.children)
+            {
+                if (item.id == id) return item; 
+                JRNL jRNL = searchJRNLByID(item, id);
+                if (jRNL != null) return jRNL;  
+            }
+            return null;
+        }
+
         void MyAfterSelectHandler(object sender, EventArgs e) 
         {
-            Console.WriteLine(e);
-            string selectedName = ((TreeView)sender).SelectedNode.Text;
+            string selectedText = ((TreeView)sender).SelectedNode.Text;
+            int selectedId = int.Parse(((TreeView)sender).SelectedNode.Name);
 
-            Console.WriteLine("Был выбран элемент:" + selectedName);
-            Console.WriteLine("Был выбран элемент:" + tv.SelectedNode);
-            
-            Dictionary<int, int> map = new Dictionary<int, int>();
+            Console.WriteLine("Был выбран элемент:" + selectedText);
+            JRNL selectedJRNL = searchJRNLByID(root, selectedId);
+
+            Console.WriteLine(selectedJRNL.value);
 
         }
     }
