@@ -1,24 +1,24 @@
-﻿using System.Collections;
-using System.Xml;
+﻿using CourseWork.TypeFile;
+using System.Collections;
+
 
 public class ParserJRNL
 {
     // JRNL документ
     private string JRNLtext = "";
-    Hashtable JRNLtable = new Hashtable();
     // Номер символа, который сейчас проходит проверку
     private int numberCurrentChar;
     // Текущий символ
     private char c;
 
-    public ParserJRNL(string _JRNLtext) 
+    public ParserJRNL(string _JRNLtext)
     {
-        JRNLtext= _JRNLtext;
+        JRNLtext = _JRNLtext;
         numberCurrentChar = 0;
         c = JRNLtext[0];
     }
 
-    public JRNL getNewElement() 
+    public JRNL getNewElement()
     {
         int level = 0;
 
@@ -53,16 +53,16 @@ public class ParserJRNL
         return element;
     }
 
-    public JRNL Parsing() 
+    public JRNL Parsing()
     {
         JRNL root = new JRNL();
 
-        while(c != '\0') 
+        while (c != '\0')
         {
             JRNL newElement = getNewElement();
             JRNL parent = root;
 
-            while(newElement.level - 1 != parent.level)
+            while (newElement.level - 1 != parent.level)
                 parent = parent.children[^1];
 
             parent.children.Add(newElement);
