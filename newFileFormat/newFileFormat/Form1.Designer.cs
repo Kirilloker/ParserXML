@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Узел0");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Узел0");
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
@@ -59,7 +59,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(284, 516);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(89, 19);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(326, 470);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(64, 15);
             this.linkLabel1.TabIndex = 8;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "linkLabel1";
@@ -118,7 +118,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(438, 470);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(390, 13);
+            this.label1.Size = new System.Drawing.Size(453, 15);
             this.label1.TabIndex = 9;
             this.label1.Text = "label1ршщошодлодлооооооооооооооооооооооооооооооооооооооооооооооо";
             // 
@@ -161,17 +161,18 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(826, 348);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "Узел0";
-            treeNode2.Tag = "фыв";
-            treeNode2.Text = "Узел0";
+            treeNode1.Name = "Узел0";
+            treeNode1.Tag = "фыв";
+            treeNode1.Text = "Узел0";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.treeView1.Size = new System.Drawing.Size(121, 97);
             this.treeView1.TabIndex = 13;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // treeView2
             // 
+            this.treeView2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.treeView2.Location = new System.Drawing.Point(196, 98);
             this.treeView2.Name = "treeView2";
             this.treeView2.Size = new System.Drawing.Size(121, 97);

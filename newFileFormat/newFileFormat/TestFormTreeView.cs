@@ -28,9 +28,19 @@ namespace newFileFormat
         public TestFormTreeView()
         {
             InitializeComponent();
+            this.Size = new Size(1200,650);
+            richTextBox.Location = new Point(350, 50);
+            richTextBox.Size = new Size(800, 550);
+            lbl.Location = new Point(350, 10);
+            lbl.BackColor = Color.AliceBlue;
+            lbl.Size = new Size(800,40);
+            this.Controls.Add(richTextBox);
+            this.Controls.Add(lbl);
         }
 
         TreeView tv = new TreeView();
+        Label lbl = new Label();
+        RichTextBox richTextBox = new RichTextBox();
         JRNL root = new JRNL();
 
         int id_jrtnl = 0;
@@ -138,8 +148,7 @@ namespace newFileFormat
             
 
             TreeView tv = new TreeView();
-            //tv.
-            //tv.Nodes = createTree(root);
+
 
             foreach (TreeNode item in createTree(root).Nodes)
             {
@@ -147,7 +156,8 @@ namespace newFileFormat
             }
 
             tv.Location = new Point(10, 10);
-            tv.Size = new Size(100, 300);
+            tv.Size = new Size(300, 600);
+            tv.BackColor = Color.AliceBlue;
             this.Controls.Add(tv);
 
             tv.DoubleClick += MyAfterSelectHandler;
@@ -174,6 +184,11 @@ namespace newFileFormat
 
             Console.WriteLine(selectedJRNL.value);
 
+
+            
+            richTextBox.Text = selectedJRNL.value;
+            lbl.Text = selectedJRNL.name;
+            richTextBox.Update();
         }
     }
 }
