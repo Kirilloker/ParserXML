@@ -81,10 +81,12 @@ public partial class GUI : Form
 
     void TreeDoubleClick(object sender, EventArgs e) 
     {
+        Console.WriteLine("Double Click");
         int selectedId = int.Parse(((TreeView)sender).SelectedNode.Name);
         JRNL selectedJRNL = searchJRNLByID(root, selectedId);
 
-        textElement.Text = selectedJRNL.value;
+        //textElement.Text = selectedJRNL.value;
+        textElement.Text = selectedJRNL.attribtues["text"]["contains"];
         nameElement.Text = selectedJRNL.name;
     }
 }

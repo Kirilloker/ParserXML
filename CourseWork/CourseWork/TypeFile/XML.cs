@@ -14,8 +14,6 @@ public struct XML
         attributes = new List<Attribute>();
         children = new List<XML>();
     }
-
-
 }
 
 
