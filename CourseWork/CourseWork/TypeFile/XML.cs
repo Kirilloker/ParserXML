@@ -14,12 +14,14 @@ public struct XML
         attributes = new List<Attribute>();
         children = new List<XML>();
     }
+
+
 }
 
 
-public readonly struct Attribute
+public struct Attribute
 {
-    public readonly string name;
-    public readonly string value;
+    public string name;
+    public string value;
     public Attribute(string _name, string _value) { name = _name; value = _value; }
 }

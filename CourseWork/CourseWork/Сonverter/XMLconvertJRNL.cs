@@ -29,6 +29,7 @@ public static class XMLconvertJRNL
         // Конвертируем полученный файл в string типа jrnl
         Converter converter = new Converter();
         string JRNLstring = converter.Converting(rootXML);
+        Console.WriteLine(JRNLstring);
         saveFile("testJRNL.jrnl", JRNLstring);
 
         // JRNL файл парсим в ООП формат

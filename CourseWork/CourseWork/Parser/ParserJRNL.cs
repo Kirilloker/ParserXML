@@ -31,11 +31,9 @@ public class ParserJRNL
             c = NC();
         }
 
-        while (c != '-' && c != '\n')
-        {
-            nameElement += c;
-            c = NC();
-        }
+        while (c != '\n') c = NC();
+        
+        c = NC();
 
         while (c != '~' && c != '\0')
         {
@@ -45,7 +43,7 @@ public class ParserJRNL
 
         JRNL element = new JRNL();
 
-        element.name = nameElement;
+        //element.name = nameElement;
         element.value = valueElement;
         element.level = level;
         //element.id = id_jrnl;
@@ -62,7 +60,7 @@ public class ParserJRNL
             JRNL newElement = getNewElement();
             JRNL parent = root;
 
-            while (newElement.level - 1 != parent.level)
+            while (newElement.level - parent.level != 1)
                 parent = parent.children[^1];
 
             parent.children.Add(newElement);

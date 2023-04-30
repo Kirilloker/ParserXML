@@ -1,4 +1,5 @@
 ﻿using CourseWork.TypeFile;
+using Attribute = CourseWork.TypeFile.Attribute;
 
 public class ParserXML
 {
@@ -17,6 +18,7 @@ public class ParserXML
         while (_XMLtext.Contains("  "))  _XMLtext = _XMLtext.Replace("  ", " "); 
         while (_XMLtext.Contains("< "))  _XMLtext = _XMLtext.Replace("< ", "<"); 
         while (_XMLtext.Contains(" >"))  _XMLtext = _XMLtext.Replace(" >", ">"); 
+        while (_XMLtext.Contains("\t"))  _XMLtext = _XMLtext.Replace("\t", ""); 
 
         XMLtext = _XMLtext;
         numberCurrentChar = 0;
@@ -46,9 +48,9 @@ public class ParserXML
     }
 
 
-    List<CourseWork.TypeFile.Attribute> getAttributesNewElement()
+    List<Attribute> getAttributesNewElement()
     {
-        List<CourseWork.TypeFile.Attribute> attributes = new List<CourseWork.TypeFile.Attribute>();
+        List<Attribute> attributes = new List<Attribute>();
 
         while (c != '>')
         {
@@ -56,6 +58,8 @@ public class ParserXML
             string valueAttributes = "";
 
             c = NC();
+
+            while (c == ' ') { c = NC(); }
 
             while (c != '=')
             {
@@ -77,9 +81,10 @@ public class ParserXML
                 }
             }
 
-            attributes.Add(new CourseWork.TypeFile.Attribute(nameAttributes, valueAttributes));
+            attributes.Add(new Attribute(nameAttributes, valueAttributes));
 
             c = NC();
+            while (c == ',') { c = NC(); }
         }
 
         return attributes;

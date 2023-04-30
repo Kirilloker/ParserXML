@@ -1,0 +1,31 @@
+<root>
+
+	<node name="Имя элемента", text="Текст элемента"> </node>
+
+	<node>
+		<name> 
+			<contains>Название первого элемента </contains>
+			<name-color> red </name-color>
+		</name>
+		
+		<text> 
+			<contains> Текст первого элемента который что-то тут содержит </contains>
+			<text-fon> green </text-fon>
+			<text-style> italic </text-style>
+		</text>
+
+
+		<node>
+			<name contains="Название дочернего объекта">  </name>
+			<text contains="Текст первого дочернего объекта">  </text>
+		</node>
+
+		<node>
+			<name contains="Название дочернего объекта"> </name>
+			<text contains="Текст второго дочернего объекта">  </text>
+		</node>
+		
+	</node>
+
+	
+</root>
