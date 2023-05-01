@@ -1,40 +1,37 @@
 ﻿using CourseWork.TypeFile;
+using System.Xml;
 using Attribute = CourseWork.TypeFile.Attribute;
 
-public class ParserXML
+public static class ParserXML
 {
     // Корневой элемент
 
     // XML документ
-    private string XMLtext;
+    static string XMLtext;
     // Номер символа, который сейчас проходит проверку
-    private int numberCurrentChar;
+    static int numberCurrentChar;
     // Текущий символ
-    private char c;
+    static char c;
 
-    public ParserXML(string _XMLtext)
+    public static XML getXMLTree(string _XMLtext)
     {
-        // Удаляем все дублирующиеся пробелы, пробелы между символами < >
-        while (_XMLtext.Contains("  "))  _XMLtext = _XMLtext.Replace("  ", " "); 
-        while (_XMLtext.Contains("< "))  _XMLtext = _XMLtext.Replace("< ", "<"); 
-        while (_XMLtext.Contains(" >"))  _XMLtext = _XMLtext.Replace(" >", ">"); 
-        while (_XMLtext.Contains("\t"))  _XMLtext = _XMLtext.Replace("\t", ""); 
-
         XMLtext = _XMLtext;
+        // Удаляем все дублирующиеся пробелы, пробелы между символами < >
+        while (XMLtext.Contains("  ")) XMLtext = XMLtext.Replace("  ", " ");
+        while (XMLtext.Contains("< ")) XMLtext = XMLtext.Replace("< ", "<");
+        while (XMLtext.Contains(" >")) XMLtext = XMLtext.Replace(" >", ">");
+        while (XMLtext.Contains("\t")) XMLtext = XMLtext.Replace("\t", "");
+        
         numberCurrentChar = 0;
         c = XMLtext[0];
-    }
 
-    public XML Parsing()
-    {
         if (c == '<') c = NC();
 
-        XML test = newElement();
-
-        return test;
+        return newElement();
     }
 
-    string getNameNewElement()
+    // Возвращает следующие имя элемента
+    static string getNameNewElement()
     {
         string nameElement = "";
 
@@ -47,28 +44,35 @@ public class ParserXML
         return nameElement;
     }
 
-
-    List<Attribute> getAttributesNewElement()
+    // Возвращает список атрибутов элемента
+    static List<Attribute> getAttributesNewElement()
     {
         List<Attribute> attributes = new List<Attribute>();
 
+        string nameAttribute;
+        string valueAttribute;
+
         while (c != '>')
         {
-            string nameAttributes = "";
-            string valueAttributes = "";
+            nameAttribute = "";
+            valueAttribute = "";
 
+            // ?
             c = NC();
 
-            while (c == ' ') { c = NC(); }
+            // Пропускаем пробел
+            if (c == ' ') { c = NC(); }
 
+            // Получаем название атрибута
             while (c != '=')
             {
-                nameAttributes += c;
+                nameAttribute += c;
                 c = NC();
             }
 
             c = NC();
 
+            // Если начались ковычки - получаем значение атрибута
             if (c == '\'' || c == '"')
             {
                 char typeQuotes = c;
@@ -76,21 +80,25 @@ public class ParserXML
 
                 while (c != typeQuotes)
                 {
-                    valueAttributes += c;
+                    valueAttribute += c;
                     c = NC();
                 }
             }
+            else 
+                throw new Exception("Проблема с ковычками");
 
-            attributes.Add(new Attribute(nameAttributes, valueAttributes));
-
+            attributes.Add(new Attribute(nameAttribute, valueAttribute));
+            // пропускаем закрывающиеся ковычку
             c = NC();
-            while (c == ',') { c = NC(); }
+
+            if (c == ',') { c = NC(); }
         }
 
         return attributes;
     }
 
-    public XML newElement()
+    // получение нового элемента
+    static XML newElement()
     {
         XML xmlelement = new XML();
         xmlelement.name = getNameNewElement();
@@ -99,10 +107,11 @@ public class ParserXML
 
         c = NC();
 
-        while (c == ' ') { c = NC(); }
+        if (c == ' ') { c = NC(); }
 
         while (true)
         {
+            // Если начала другого узла
             if (c == '<')
             {
                 while (true)
@@ -118,7 +127,6 @@ public class ParserXML
                             return xmlelement;
                         else
                             throw new Exception("Не правильный закрывающий тэг");
-                        //Console.WriteLine("ERROR");
                     }
                     else
                     {
@@ -127,6 +135,7 @@ public class ParserXML
                     }
                 }
             }
+            // Иначе обрабатываем значение элемента
             else
             {
                 string valueElement = "";
@@ -144,7 +153,7 @@ public class ParserXML
     }
 
     // перейти на следующий символ
-    char NC()
+    static char NC()
     {
         if (XMLtext.Length <= numberCurrentChar + 1)
             return '\0';

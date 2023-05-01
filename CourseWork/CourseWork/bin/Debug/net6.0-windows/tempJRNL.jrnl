@@ -1,0 +1,3 @@
+~
+name.contains:Название первого элемента ;back-color:Azure;font-color:green;
+text.contains:Текст первого элемента который что-то тут содержит ;font-color:red;font-style:italic;size-text:105;

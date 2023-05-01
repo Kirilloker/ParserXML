@@ -2,8 +2,6 @@
 
 public struct JRNL
 {
-    //public string name;
-    public string name;
     public Dictionary<string, Dictionary<string, string>> attribtues;
     public int level;
     public int id;
@@ -11,8 +9,6 @@ public struct JRNL
 
     public JRNL()
     {
-        name = "";
-        //value = "";
         attribtues = new Dictionary<string, Dictionary<string, string>>();
         level = 0;
         id = -1;

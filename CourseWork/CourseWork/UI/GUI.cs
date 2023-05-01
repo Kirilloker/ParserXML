@@ -54,13 +54,20 @@ public partial class GUI : Form
 
         foreach (JRNL child in root.children)
         {
-            TreeNode node = new TreeNode(child.name);
+            string nameNode = "";
+
+            if (child.attribtues.ContainsKey("name") && child.attribtues["name"].ContainsKey("contains"))
+                nameNode = child.attribtues["name"]["contains"];
+            else
+                nameNode = "Not found name";
+
+            TreeNode node = new TreeNode(nameNode);
 
             foreach (TreeNode child_node in createTree(child).Nodes)
                 node.Nodes.Add(child_node);
 
             node.Name = child.id.ToString();
-            node.Text = child.name;
+            node.Text = nameNode;            
 
             tree.Nodes.Add(node);
         }
