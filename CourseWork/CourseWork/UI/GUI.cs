@@ -17,7 +17,7 @@ public partial class GUI : Form
     public GUI()
     {
         InitializeComponent();
-
+        this.Size = new Size(1200, 650);
         // Настройка дерева
         tree.Location = new Point(10, 10);
         tree.Size = new Size(300, 600);
@@ -86,7 +86,156 @@ public partial class GUI : Form
         JRNL selectedJRNL = searchJRNLByID(root, selectedId);
 
         //textElement.Text = selectedJRNL.value;
-        textElement.Text = selectedJRNL.attribtues["text"]["contains"];
-        nameElement.Text = selectedJRNL.name;
+        if (selectedJRNL.attribtues.ContainsKey("text"))
+            settingsText(selectedJRNL.attribtues["text"]);
+        
+        if (selectedJRNL.attribtues.ContainsKey("name"))
+            settingsName(selectedJRNL.attribtues["name"]);
     }
+
+    void settingsText(Dictionary<string, string> settings) 
+    {
+        if (settings.ContainsKey("back-color")) 
+        {
+            textElement.BackColor = Color.FromName(settings["back-color"]);
+        }
+        else 
+        {
+            textElement.BackColor = Color.White;
+        }
+
+        if (settings.ContainsKey("contains")) 
+        {
+            textElement.Text = settings["contains"];
+        }
+        else 
+        {
+            textElement.Text = "Not found Text";
+        }
+
+        
+        if (settings.ContainsKey("font-color"))
+        {
+            textElement.ForeColor = Color.FromName(settings["font-color"]);
+        }
+        else
+        {
+            textElement.ForeColor = Color.Black;
+        }
+
+        string familyName = "Times New Roman";
+        int sizeText = 14;
+        FontStyle fontStyle = FontStyle.Regular;
+
+        if (settings.ContainsKey("family-name"))
+        {
+            familyName = settings["famil-yname"];
+        }
+
+        if (settings.ContainsKey("size-text"))
+        {
+            sizeText = int.Parse(settings["size-text"]);
+        }
+
+        if (settings.ContainsKey("font-style"))
+        {
+            switch (settings["font-style"])
+            {
+                case "bold":
+                    fontStyle = FontStyle.Bold;
+                    break;
+                case "italic":
+                    fontStyle = FontStyle.Italic;
+                    break;
+                case "normal":
+                    fontStyle = FontStyle.Regular;
+                    break;
+                case "underline":
+                    fontStyle = FontStyle.Underline;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        textElement.Font =new Font(familyName, sizeText, fontStyle);
+    }
+
+
+
+
+
+
+
+
+    void settingsName(Dictionary<string, string> settings)
+    {
+        if (settings.ContainsKey("back-color"))
+        {
+            nameElement.BackColor = Color.FromName(settings["back-color"]);
+            nameElement.BackColor = Color.Azure;
+        }
+        else
+        {
+            nameElement.BackColor = Color.White;
+        }
+
+        if (settings.ContainsKey("contains"))
+        {
+            nameElement.Text = settings["contains"];
+        }
+        else
+        {
+            nameElement.Text = "Not found Text";
+        }
+
+
+        if (settings.ContainsKey("font-color"))
+        {
+            nameElement.ForeColor = Color.FromName(settings["font-color"]);
+        }
+        else
+        {
+            nameElement.ForeColor = Color.Black;
+        }
+
+        string familyName = "Times New Roman";
+        int sizeText = 20;
+        FontStyle fontStyle = FontStyle.Bold;
+
+        if (settings.ContainsKey("family-name"))
+        {
+            familyName = settings["famil-yname"];
+        }
+
+        if (settings.ContainsKey("size-text"))
+        {
+            sizeText = int.Parse(settings["size-text"]);
+        }
+
+        if (settings.ContainsKey("font-style"))
+        {
+            switch (settings["font-style"])
+            {
+                case "bold":
+                    fontStyle = FontStyle.Bold;
+                    break;
+                case "italic":
+                    fontStyle = FontStyle.Italic;
+                    break;
+                case "normal":
+                    fontStyle = FontStyle.Regular;
+                    break;
+                case "underline":
+                    fontStyle = FontStyle.Underline;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        nameElement.Font = new Font(familyName, sizeText, fontStyle);
+    }
+
 }
+

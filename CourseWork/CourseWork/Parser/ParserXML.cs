@@ -117,7 +117,8 @@ public class ParserXML
                         if (getNameNewElement() == xmlelement.name)
                             return xmlelement;
                         else
-                            Console.WriteLine("ERROR");
+                            throw new Exception("Не правильный закрывающий тэг");
+                        //Console.WriteLine("ERROR");
                     }
                     else
                     {
