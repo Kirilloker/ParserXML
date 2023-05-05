@@ -7,7 +7,7 @@ public static class ParserXML
     // Корневой элемент
 
     // XML документ
-    static string XMLtext;
+    static string? XMLtext;
     // Номер символа, который сейчас проходит проверку
     static int numberCurrentChar;
     // Текущий символ
@@ -149,7 +149,7 @@ public static class ParserXML
                 xmlelement.value = valueElement;
             }
         }
-
+            
     }
 
     // перейти на следующий символ

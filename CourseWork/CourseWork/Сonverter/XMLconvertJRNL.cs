@@ -1,4 +1,6 @@
 ﻿using CourseWork.TypeFile;
+using System.Diagnostics;
+using System.Xml.Linq;
 using Attribute = CourseWork.TypeFile.Attribute;
 
 namespace CourseWork.Сonverter;
@@ -27,17 +29,39 @@ public static class XMLconvertJRNL
     // Получить JRNL дерево по xml файлу
     static public JRNL getJRNL(string nameFile = "test.xml")
     {
+        var timer = new Stopwatch();
+        string time = "";
+        timer.Start();
+
         // XML файл парсим в ООП формат
         XML rootXML = ParserXML.getXMLTree(openFile(nameFile));
 
+        timer.Stop();
+        time += "1: " + timer.Elapsed.TotalSeconds + "\n";
+        timer.Reset();
+
+        timer.Start();
         // Конвертируем полученный файл в string типа jrnl
         string JRNLstring = ConvertingElement(rootXML);
 
+        timer.Stop();
+        time += "2: " + timer.Elapsed.TotalSeconds + "\n";
+        timer.Reset();
+        
         // сохраняем jrnl файл
-        saveFile("tempJRNL.jrnl", JRNLstring);
+        saveFile("D:\\Charp\\CourseWorkParser\\ParserXML\\CourseWork\\CourseWork\\temp.jrnl", JRNLstring);
+
+        timer.Start();
 
         // JRNL файл парсим в ООП формат
         JRNL rootJRNL = ParserJRNL.getJRNLTree(JRNLstring);
+
+        timer.Stop();
+        time += "3: " + timer.Elapsed.TotalSeconds + "\n";
+        timer.Reset();
+
+
+        File.WriteAllText("D:\\Charp\\CourseWorkParser\\ParserXML\\CourseWork\\CourseWork\\log.txt", time);
 
         return rootJRNL;
     }

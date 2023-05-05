@@ -1,0 +1,6 @@
+<root>
+    <node>
+        <name contains="Название элемента"> </name>
+        <text contains="Текст элемента"> </text>
+    </node>
+</root>

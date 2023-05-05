@@ -117,6 +117,8 @@ public static class ParserJRNL
         JRNLtext = _JRNLtext;
         // Указатель показывает на первый символ
         c = JRNLtext[0];
+        numberCurrentChar = 0;
+        id_jrnl = 0;
 
         JRNL root = new JRNL();
 

@@ -1,0 +1,44 @@
+<root>
+	<node>
+		<name> 
+			<contains>Первый элемент </contains>
+			<back-color>Azure</back-color>
+			<font-color>green</font-color>
+		</name>
+		
+		<text> 
+			<contains> Содержание первого элемента </contains>
+			<font-color>red</font-color>
+			<font-style>italic</font-style>
+			<size-text>15</size-text>
+		</text>		
+	</node>
+	
+	<node>
+		<name> 
+			<contains>Второй элемент</contains>
+			<back-color>Azure</back-color>
+		</name>
+		
+		<text> 
+			<contains> Содержание второго элемента </contains>
+			<font-color>blue</font-color>
+			<size-text>12</size-text>
+		</text>	
+
+	
+		<node>
+			<name> 
+				<contains>Третий элемент</contains>
+				<back-color>White</back-color>
+			</name>
+			
+			<text> 
+				<contains> Это третий элемент - он является потомком второго элемента </contains>
+				<font-color>black</font-color>
+				<size-text>18</size-text>
+			</text>			
+		</node>
+		
+	</node>
+</root>

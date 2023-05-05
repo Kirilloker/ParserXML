@@ -1,0 +1,11 @@
+<root>
+    <node>
+        <name>
+            <contains> Название элемента </contains>
+        </name>
+
+        <text>
+            <contains> Текст элемента</contains>
+        </text>
+    </node>
+</root>

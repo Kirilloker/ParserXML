@@ -28,13 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            openFileDialog1 = new OpenFileDialog();
+            button1 = new Button();
             SuspendLayout();
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(4, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 0;
+            button1.Text = "Open file";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // GUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Name = "GUI";
             Text = "GUI";
             Load += GUI_Load;
@@ -42,5 +59,8 @@
         }
 
         #endregion
+
+        private OpenFileDialog openFileDialog1;
+        private Button button1;
     }
 }

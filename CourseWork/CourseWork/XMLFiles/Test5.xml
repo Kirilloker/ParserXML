@@ -1,0 +1,12 @@
+<root>
+    <node text="Текст элемента">
+        <name contains="Название элемента">
+            <font-color> green</font-color>
+        </name>
+
+        <text>
+            <font-style>italic</font-style>
+        </text>
+
+    </node>
+</root>
