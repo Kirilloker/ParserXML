@@ -35,7 +35,7 @@ public static class ParserXML
     {
         string nameElement = "";
 
-        while (c != ' ' && c != '>')
+        while (c != ' ' && c != '>' && c != '/')
         {
             nameElement += c;
             c = NC();
@@ -45,6 +45,7 @@ public static class ParserXML
     }
 
     // Возвращает список атрибутов элемента
+    // Возвращает список атрибутов элемента
     static List<Attribute> getAttributesNewElement()
     {
         List<Attribute> attributes = new List<Attribute>();
@@ -52,7 +53,7 @@ public static class ParserXML
         string nameAttribute;
         string valueAttribute;
 
-        while (c != '>')
+        while (c != '>' && c != '/')  // добавляем проверку на '/'
         {
             nameAttribute = "";
             valueAttribute = "";
@@ -84,7 +85,7 @@ public static class ParserXML
                     c = NC();
                 }
             }
-            else 
+            else
                 throw new Exception("Проблема с ковычками");
 
             attributes.Add(new Attribute(nameAttribute, valueAttribute));
@@ -97,6 +98,8 @@ public static class ParserXML
         return attributes;
     }
 
+
+    // получение нового элемента
     // получение нового элемента
     static XML newElement()
     {
@@ -104,6 +107,21 @@ public static class ParserXML
         xmlelement.name = getNameNewElement();
         xmlelement.attributes = getAttributesNewElement();
         xmlelement.children = new List<XML>();
+
+        if (c == '/')
+        {
+            // пропускаем символ '/' и ожидаем '>'
+            c = NC();
+            if (c == '>')
+            {
+                c = NC();
+                return xmlelement;
+            }
+            else
+            {
+                throw new Exception("Не правильный закрывающий тэг");
+            }
+        }
 
         c = NC();
 
@@ -124,14 +142,17 @@ public static class ParserXML
 
                         // Если дошли до закрывающего тега элемента который собирали, то завершить сборку
                         if (getNameNewElement() == xmlelement.name)
+                        {
+                            c = NC();
                             return xmlelement;
+                        }
                         else
                             throw new Exception("Не правильный закрывающий тэг");
                     }
                     else
                     {
                         xmlelement.children.Add(newElement());
-                        while (c != '<') c = NC(); 
+                        while (c != '<') c = NC();
                     }
                 }
             }
@@ -149,8 +170,9 @@ public static class ParserXML
                 xmlelement.value = valueElement;
             }
         }
-            
     }
+
+
 
     // перейти на следующий символ
     static char NC()

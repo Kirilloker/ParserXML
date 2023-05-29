@@ -35,9 +35,11 @@ public static class XMLconvertJRNL
 
         // XML файл парсим в ООП формат
         XML rootXML = ParserXML.getXMLTree(openFile(nameFile));
+        rootXML.PrintXml(rootXML);
 
         timer.Stop();
         time += "1: " + timer.Elapsed.TotalSeconds + "\n";
+        Console.WriteLine(time);
         timer.Reset();
 
         timer.Start();
